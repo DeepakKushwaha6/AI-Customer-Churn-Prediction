@@ -1,8 +1,53 @@
-venv/
+# Python
 __pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+env/
+.venv/
+
+# Jupyter
 .ipynb_checkpoints/
-*.pyc
-*.pkl
-*.joblib
+
+# Environment Variables
 .env
+.env.*
+
+# IDE Files
 .vscode/
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Build Files
+build/
+dist/
+*.egg-info/
+
+# Streamlit Secrets
+.streamlit/secrets.toml
+
+# Temporary Files
+temp/
+tmp/
+
+# Test & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Data Files (optional)
+# data/raw/*.csv
+# data/processed/*.csv
+
+# Keep trained model files for deployment
+# DO NOT IGNORE THESE:
+# *.pkl
+# *.joblib
