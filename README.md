@@ -1,27 +1,93 @@
 # AI-Powered Customer Churn Prediction System
 
-A complete end-to-end machine learning system that predicts whether a telecom customer is likely to churn (leave the company) based on demographics, account information, and service usage patterns.
+An end-to-end Machine Learning application that predicts whether a telecom customer is likely to churn based on customer demographics, account information, and service usage patterns. The project demonstrates the complete ML lifecycle, from data preprocessing and feature engineering to model deployment with an interactive Streamlit dashboard.
 
-## Features
+**🌐 Live Demo:** https://ai-customer-churn-prediction-ykqrabvby54bjzzdr3b2zm.streamlit.app/
 
-- **Data Preprocessing** — Missing value imputation, duplicate removal, categorical encoding, numerical scaling, stratified train-test split
-- **Feature Engineering** — Tenure groups, average monthly spending, service count, contract duration encoding
-- **Multiple ML Models** — Logistic Regression, Random Forest, XGBoost, Gradient Boosting
-- **Hyperparameter Tuning** — GridSearchCV with 5-fold cross-validation
-- **Model Evaluation** — Accuracy, Precision, Recall, F1, ROC-AUC, confusion matrix
-- **Explainable AI** — SHAP feature contribution analysis
-- **Streamlit Dashboard** — Interactive prediction interface with risk indicators and downloadable reports
-- **Synthetic Data Fallback** — Automatically generates Telco-like data if the dataset is missing
+---
+
+## Project Overview
+
+Customer churn is one of the biggest business challenges for subscription-based companies. Retaining existing customers is significantly more cost-effective than acquiring new ones.
+
+This project helps businesses:
+
+* Predict customers who are likely to churn.
+* Understand the key factors driving churn.
+* Estimate customer risk using probability scores.
+* Support proactive customer retention strategies.
+* Provide explainable predictions using SHAP.
+
+---
+
+## Key Features
+
+* End-to-end Machine Learning pipeline
+* Data preprocessing and cleaning
+* Advanced feature engineering
+* Multiple ML algorithms
+* Hyperparameter tuning using GridSearchCV
+* Model comparison and evaluation
+* Explainable AI with SHAP
+* Interactive Streamlit dashboard
+* Downloadable prediction reports
+* Automatic synthetic data generation when the dataset is unavailable
+
+---
+
+## Tech Stack
+
+### Programming Language
+
+* Python
+
+### Data Processing
+
+* Pandas
+* NumPy
+
+### Data Visualization
+
+* Matplotlib
+* Seaborn
+* Plotly
+
+### Machine Learning
+
+* Scikit-learn
+* XGBoost
+
+### Explainable AI
+
+* SHAP
+
+### Web Application
+
+* Streamlit
+
+### Model Persistence
+
+* Joblib
+
+### Development Tools
+
+* Jupyter Notebook
+* Git
+* GitHub
+
+---
 
 ## Project Structure
 
-```
+```text
 customer_churn_prediction/
 ├── data/
-│   ├── raw/                  # Raw Telco dataset CSV
-│   └── processed/            # Engineered dataset
+│   ├── raw/
+│   └── processed/
+│
 ├── notebooks/
-│   └── EDA.ipynb             # Exploratory data analysis
+│   └── EDA.ipynb
+│
 ├── src/
 │   ├── data_preprocessing.py
 │   ├── feature_engineering.py
@@ -29,166 +95,312 @@ customer_churn_prediction/
 │   ├── evaluate_model.py
 │   ├── predict.py
 │   └── utils.py
+│
 ├── models/
-│   ├── churn_model.pkl       # Best trained model
-│   ├── preprocessor.pkl      # Fitted preprocessor
-│   └── model_metadata.pkl    # Feature names and tuning results
+│   ├── churn_model.pkl
+│   ├── preprocessor.pkl
+│   └── model_metadata.pkl
+│
 ├── app/
-│   └── streamlit_app.py      # Interactive dashboard
+│   └── streamlit_app.py
+│
 ├── reports/
-│   ├── plots/                # Generated visualizations
-│   └── metrics/              # Evaluation metrics JSON
+│   ├── plots/
+│   └── metrics/
+│
 ├── requirements.txt
 ├── README.md
-└── main.py                   # Pipeline entry point
+└── main.py
 ```
 
-## Environment Setup
+---
 
-### Prerequisites
+## Dataset
 
-- Python 3.12 or higher
-- pip
+This project uses the IBM Telco Customer Churn dataset.
 
-### Installation
+Dataset includes customer information such as:
 
-```bash
-# Clone or navigate to the project directory
-cd customer_churn_prediction
+* Customer demographics
+* Service subscriptions
+* Billing details
+* Contract information
+* Payment methods
+* Customer tenure
+* Monthly and total charges
+* Churn status
 
-# Create a virtual environment (recommended)
-python -m venv venv
+Place the dataset inside:
 
-# Activate virtual environment
-# Windows:
-venv\Scripts\activate
-# macOS/Linux:
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### Dataset
-
-Place the Telco Customer Churn dataset at:
-
-```
+```text
 data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv
 ```
 
-Download from [Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn) or [IBM Sample Data](https://community.ibm.com/community/user/businessanalytics/blogs/steven-macko/2019/07/11/telco-customer-churn-1113).
+If the dataset is not found, the application automatically generates synthetic telecom-like customer data for demonstration purposes.
 
-If the dataset is not present, the pipeline automatically generates synthetic Telco-like data.
+---
 
-## Usage
+## Installation
 
-### 1. Run the Full Pipeline
+### Clone the Repository
 
-Trains all models, selects the best performer, saves artifacts, and generates reports:
+```bash
+git clone https://github.com/<your-username>/customer_churn_prediction.git
+
+cd customer_churn_prediction
+```
+
+### Create a Virtual Environment
+
+Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+Linux / macOS
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Running the Project
+
+### Train the Model
 
 ```bash
 python main.py
 ```
 
-### 2. Launch the Streamlit Dashboard
+This will:
+
+* Load the dataset
+* Clean and preprocess data
+* Engineer new features
+* Train multiple ML models
+* Perform hyperparameter tuning
+* Select the best-performing model
+* Save trained artifacts
+* Generate evaluation reports
+
+---
+
+### Launch the Dashboard
 
 ```bash
 streamlit run app/streamlit_app.py
 ```
 
-Open the URL shown in the terminal (typically `http://localhost:8501`).
+The application will be available at:
 
-### 3. Exploratory Data Analysis
+```text
+http://localhost:8501
+```
+
+---
+
+### Exploratory Data Analysis
 
 ```bash
 jupyter notebook notebooks/EDA.ipynb
 ```
 
-## Model Training Details
+---
 
-| Model              | Hyperparameters Tuned                          |
-|--------------------|------------------------------------------------|
-| Logistic Regression| C, penalty, solver                             |
-| Random Forest      | n_estimators, max_depth, min_samples_split     |
-| XGBoost            | n_estimators, max_depth, learning_rate         |
-| Gradient Boosting  | n_estimators, max_depth, learning_rate         |
+## Machine Learning Pipeline
 
-Selection criterion: highest ROC-AUC on the held-out test set.
+```
+Dataset
+      │
+      ▼
+Data Cleaning
+      │
+      ▼
+Feature Engineering
+      │
+      ▼
+Train-Test Split
+      │
+      ▼
+Model Training
+      │
+      ▼
+Hyperparameter Tuning
+      │
+      ▼
+Model Evaluation
+      │
+      ▼
+SHAP Explainability
+      │
+      ▼
+Prediction
+      │
+      ▼
+Streamlit Dashboard
+```
+
+---
+
+## Models Used
+
+* Logistic Regression
+* Random Forest Classifier
+* Gradient Boosting Classifier
+* XGBoost Classifier
+
+The final model is selected based on the highest ROC-AUC score.
+
+---
 
 ## Evaluation Metrics
 
-The system reports:
+The project evaluates models using:
 
-- **Accuracy** — Overall correct predictions
-- **Precision** — True positives / predicted positives
-- **Recall** — True positives / actual positives
-- **F1 Score** — Harmonic mean of precision and recall
-- **ROC-AUC** — Area under the receiver operating characteristic curve
-- **Confusion Matrix** — True/false positive and negative counts
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+* ROC-AUC Score
+* Confusion Matrix
 
-Results are saved to `reports/metrics/evaluation_metrics.json` and visualizations to `reports/plots/`.
+Evaluation reports are automatically saved inside:
 
-## Streamlit Dashboard
-
-The dashboard provides:
-
-1. **Customer Input Form** — All Telco features with sensible defaults
-2. **Churn Prediction** — Binary label and probability
-3. **Risk Level Indicator** — Low (<30%), Medium (30–60%), High (>60%)
-4. **SHAP Feature Chart** — Top contributors to the prediction
-5. **Download Report** — Text summary of the prediction
-
-## API Usage (Programmatic)
-
-```python
-import sys
-from pathlib import Path
-
-sys.path.insert(0, str(Path("src")))
-from predict import ChurnPredictor
-
-predictor = ChurnPredictor()
-predictor.load_artifacts()
-
-customer = {
-    "gender": "Female",
-    "SeniorCitizen": 0,
-    "Partner": "Yes",
-    "Dependents": "No",
-    "tenure": 12,
-    "PhoneService": "Yes",
-    "MultipleLines": "No",
-    "InternetService": "Fiber optic",
-    "OnlineSecurity": "No",
-    "OnlineBackup": "No",
-    "DeviceProtection": "No",
-    "TechSupport": "No",
-    "StreamingTV": "Yes",
-    "StreamingMovies": "No",
-    "Contract": "Month-to-month",
-    "PaperlessBilling": "Yes",
-    "PaymentMethod": "Electronic check",
-    "MonthlyCharges": 85.0,
-    "TotalCharges": 1020.0,
-}
-
-result = predictor.predict(customer)
-print(f"Churn: {result.churn_prediction} ({result.churn_probability:.1%})")
-print(f"Risk: {result.risk_level}")
+```text
+reports/metrics/
 ```
 
-## Deployment
+Visualizations are saved inside:
 
-For production deployment:
+```text
+reports/plots/
+```
 
-1. Train the model: `python main.py`
-2. Copy `models/`, `src/`, and `app/` to your server
-3. Install dependencies: `pip install -r requirements.txt`
-4. Run: `streamlit run app/streamlit_app.py --server.port 8501`
+---
 
-For containerized deployment, wrap the Streamlit app in a Docker image with the trained model artifacts included.
+## Streamlit Dashboard Features
+
+The dashboard includes:
+
+* Customer Information Form
+* Churn Prediction
+* Churn Probability
+* Risk Level Indicator
+* SHAP Feature Importance
+* Downloadable Prediction Report
+
+Risk Categories
+
+| Probability | Risk Level |
+| ----------- | ---------- |
+| Below 30%   | Low        |
+| 30%–60%     | Medium     |
+| Above 60%   | High       |
+
+---
+
+## Sample Prediction
+
+Input:
+
+```json
+{
+  "Contract": "Month-to-month",
+  "InternetService": "Fiber optic",
+  "TechSupport": "No",
+  "tenure": 12,
+  "MonthlyCharges": 85
+}
+```
+
+Output:
+
+```text
+Prediction : Churn
+
+Probability : 91%
+
+Risk Level : High
+
+Recommended Action :
+Offer a retention discount and proactive customer support.
+```
+
+---
+
+## Live Demo
+
+Try the deployed application:
+
+[**https://ai-customer-churn-prediction-ykqrabvby54bjzzdr3b2zm.streamlit.app/**](https://ai-customer-churn-prediction-ykqrabvby54bjzzdr3b2zm.streamlit.app/)
+
+You can:
+
+* Predict customer churn in real time.
+* View churn probability.
+* Explore SHAP explanations.
+* Test different customer profiles.
+* Download prediction reports.
+
+---
+
+## Future Improvements
+
+* FastAPI REST API
+* Docker deployment
+* MLflow experiment tracking
+* Customer segmentation using K-Means
+* Retention recommendation engine
+* PostgreSQL database integration
+* Authentication and user management
+* Cloud deployment on AWS or Azure
+
+---
+
+## Learning Outcomes
+
+This project demonstrates practical experience in:
+
+* Data Cleaning
+* Feature Engineering
+* Exploratory Data Analysis
+* Machine Learning
+* Hyperparameter Optimization
+* Model Evaluation
+* Explainable AI
+* Dashboard Development
+* Model Deployment
+* Software Project Structure
+* Git and GitHub
+
+---
 
 ## License
 
-MIT License — free to use for educational and commercial purposes.
+This project is licensed under the MIT License.
+
+---
+
+## Author
+
+**Deepak K Kushwaha**
+
+B.Tech CSE (AI & ML)
+
+Machine Learning • Data Science • AI Engineering
+
+GitHub: https://github.com/<your-username>
+
+---
+
+⭐ If you found this project helpful, consider giving it a star on GitHub!
